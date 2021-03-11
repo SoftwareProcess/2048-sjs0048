@@ -9,5 +9,5 @@ def _create(userParms):
     grid[locTwo] = '2'
     grid = str(grid)
     
-    result = {'grid': grid}
+    result = {'grid': grid, 'pos1': locOne, 'pos2': locTwo}
     return result
