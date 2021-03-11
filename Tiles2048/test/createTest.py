@@ -8,7 +8,7 @@ class CreateTest(unittest.TestCase):
 
 #checks to make sure the size of the string is correct
     def test_create_HappyPathTest010(self):
-        userParms = {'grid': '16'}
+        userParms = {'grid': '000000000000'}
         actualResult = create._create(userParms)
         self.assertEqual(actualResult, userParms)
         
