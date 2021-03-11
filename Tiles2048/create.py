@@ -11,5 +11,5 @@ def _create(userParms):
     translation[locTwo] = '2'
     grid = ''.join(translation)
     
-    result = {'grid': grid, 'pos1': locOne, 'pos2': locTwo}
+    result = {'grid': grid}
     return result
