@@ -21,14 +21,14 @@ class CreateTest(unittest.TestCase):
     def test_create_HappyPathTest030(self):
         userParms = {'grid': '0020020000000000'}
         actualResult = create._create(userParms)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(actualResult['grid'].count('2'), userParms['grid'].count('2'))
         
     
     def test_create_HappyPathTest040(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
         
@@ -36,49 +36,49 @@ class CreateTest(unittest.TestCase):
     def test_create_HappyPathTest050(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
             
     def test_create_HappyPathTest060(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
             
     def test_create_HappyPathTest070(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
             
     def test_create_HappyPathTest080(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
             
     def test_create_HappyPathTest090(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
             
     def test_create_HappyPathTest100(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
             
     def test_create_HappyPathTest110(self):
         numOfTwos = 2
         actualResult = create._create(None)
-        print(actualResult)
+        print(actualResult['grid'])
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
         
