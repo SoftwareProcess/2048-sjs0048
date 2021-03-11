@@ -10,7 +10,7 @@ class CreateTest(unittest.TestCase):
     def test_create_HappyPathTest010(self):
         userParms = {'op': 'create', 'grid': '6'}
         actualResult = create._create(userParms)
-        self.assertIsNotNone(actualResult)
+        self.assertIsEqual(actualResult, userParms)
         
         
         
