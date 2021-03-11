@@ -1,3 +1,4 @@
 def _create(userParms):
-    result = {'create': 'create stub'}
+    test = 5
+    result = {'grid': test}
     return result
