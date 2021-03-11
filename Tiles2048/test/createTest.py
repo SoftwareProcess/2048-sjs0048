@@ -8,8 +8,9 @@ class CreateTest(unittest.TestCase):
 
 #checks to make sure the size of the string is correct
     def test_create_HappyPathTest010(self):
-        userParms = {'op': 'create', 'grid': '16'}
+        userParms = {'op': 'create', 'grid': '6'}
         actualResult = create._create(userParms)
         self.assertIsNotNone(actualResult)
+        
         
         
