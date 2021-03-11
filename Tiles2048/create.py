@@ -6,10 +6,10 @@ def _create(userParms):
     locTwo = random.randint(0, 15)
     while locOne == locTwo:
         locTwo = random.randint(0,15)
-    grid = list(initial)
-    grid[locOne] = '2'
-    grid[locTwo] = '2'
-    grid = str(grid)
+    translation = list(initial)
+    translation[locOne] = '2'
+    translation[locTwo] = '2'
+    grid = str(translation)
     
     result = {'grid': grid, 'pos1': locOne, 'pos2': locTwo}
     return result
