@@ -1,6 +1,6 @@
 applications:
   - path: .
-    name: umphrda-2048
+    name: sjs0048-2048
     environment_json: {}
     memory: 128M
     instances: 1
