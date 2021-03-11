@@ -6,8 +6,8 @@ def _create(userParms):
     locTwo = random.randint(0, 15)
     while locTwo == locOne:
         locTwo = random.randint(0,15)
-    grid[locOne] = '2'
-    grid[locTwo] = '2'
+    grid[locOne] = "2"
+    grid[locTwo] = "2"
     
     result = {'grid': grid}
     return result
