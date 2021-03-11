@@ -31,3 +31,54 @@ class CreateTest(unittest.TestCase):
         print(actualResult)
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
+        
+        
+    def test_create_HappyPathTest050(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+            
+    def test_create_HappyPathTest060(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+            
+    def test_create_HappyPathTest070(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+            
+    def test_create_HappyPathTest080(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+            
+    def test_create_HappyPathTest090(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+            
+    def test_create_HappyPathTest100(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+            
+    def test_create_HappyPathTest110(self):
+        numOfTwos = 2
+        actualResult = create._create(None)
+        print(actualResult)
+        self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
+        
+        
