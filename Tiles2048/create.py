@@ -9,7 +9,7 @@ def _create(userParms):
     translation = list(initial)
     translation[locOne] = '2'
     translation[locTwo] = '2'
-    grid = str(translation)
+    grid = ''.join(translation)
     
     result = {'grid': grid, 'pos1': locOne, 'pos2': locTwo}
     return result
