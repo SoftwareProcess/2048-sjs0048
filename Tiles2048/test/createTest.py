@@ -21,11 +21,13 @@ class CreateTest(unittest.TestCase):
     def test_create_HappyPathTest030(self):
         userParms = {'grid': '0020020000000000'}
         actualResult = create._create(userParms)
+        print(actualResult)
         self.assertEqual(actualResult['grid'].count('2'), userParms['grid'].count('2'))
         
     
     def test_create_HappyPathTest040(self):
         numOfTwos = 2
         actualResult = create._create(None)
+        print(actualResult)
         self.assertEqual(numOfTwos, actualResult['grid'].count('2'))
         
