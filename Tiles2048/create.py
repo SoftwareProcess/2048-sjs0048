@@ -1,13 +1,13 @@
 import random
 
 def _create(userParms):
-    grid = '0200000000000020'
+    initial = '0000000000000000'
     locOne = random.randint(0, 15)
     locTwo = random.randint(0, 15)
-    while locTwo == locOne:
-        locTwo = random.randint(0,15)
+    grid = list(initial)
     grid[locOne] = '2'
     grid[locTwo] = '2'
+    grid = str(grid)
     
     result = {'grid': grid}
     return result
