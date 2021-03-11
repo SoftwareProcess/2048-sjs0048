@@ -1,4 +1,4 @@
 def _create(userParms):
-    test = 5
-    result = {'grid': test}
+    grid = '0000000000000000'
+    result = {'grid': len(grid)}
     return result
