@@ -33,9 +33,22 @@ def _create(userParms):
     encoded = (grid + '.' + str(score)).encode()                #concatenates grid and score as str with a '.' between them. Then encodes it
     integrity = hashlib.sha256(encoded).hexdigest().upper()     #changes the above encoded str into a hashed string with uppercase letters
     
+    ####################################
+    ###Creation of the status key-pair##
+    ####################################
+    
+    status = ''
     
     
-    result = {'grid': grid, 'score': score, 'integrity': integrity}
+    ####################################
+    ####Create a dictionary and add#####
+    ###all previous vars as key-pairs###
+    ####################################
     
+    result = {'grid': grid, 'score': score, 'integrity': integrity, 'status': status}
+    
+    ####################################
+    ###return the created dictionary####
+    ####################################
     
     return result
