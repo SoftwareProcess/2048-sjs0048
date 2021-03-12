@@ -33,5 +33,5 @@ class CreateTest(unittest.TestCase):
         actualResult = create._create(None)
         encoded = (actualResult['grid'] + '.' + str(actualResult['score'])).encode()
         gridScoreHash = hashlib.sha256(encoded)
-        print(gridScoreHash)
+        print(str(gridScoreHash))
         self.assertEqual(actualResult['hash'], gridScoreHash)

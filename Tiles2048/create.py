@@ -29,11 +29,11 @@ def _create(userParms):
     ### Creation of the SHA256 Hash ####
     ####################################
     
-    hash = ''
+    integrity = ''
     
     
     
-    result = {'grid': grid, 'score': score, 'hash': hash}
+    result = {'grid': grid, 'score': score, 'integrity': integrity}
     
     
     return result
