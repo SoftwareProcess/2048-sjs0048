@@ -37,7 +37,7 @@ def _create(userParms):
     ###Creation of the status key-pair##
     ####################################
     
-    status = ''
+    status = 'ok'
     
     
     ####################################
