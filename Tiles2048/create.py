@@ -1,15 +1,37 @@
 import random
 
 def _create(userParms):
-    initial = '0000000000000000'
-    locOne = random.randint(0, 15)
-    locTwo = random.randint(0, 15)
-    while locOne == locTwo:
-        locTwo = random.randint(0,15)
-    translation = list(initial)
-    translation[locOne] = '2'
-    translation[locTwo] = '2'
-    grid = ''.join(translation)
+    ####################################
+    ##initialization of the game board##
+    ####################################
+    initial = '0000000000000000'        #initialized to all 0's
+    locOne = random.randint(0, 15)      #determine one random location for '2' placement
+    locTwo = random.randint(0, 15)      #determine second random location for '2' placement
     
-    result = {'grid': grid}
+    while locOne == locTwo:             #must continually generate a new random number
+        locTwo = random.randint(0,15)   #until the locations are not the same
+        
+        
+    translation = list(initial)         #convert initial board to a list for insertion of 2's
+    translation[locOne] = '2'           #insert first 2
+    translation[locTwo] = '2'           #insert second 2
+    grid = ''.join(translation)         #convert list back into a string
+    
+    
+    
+    ####################################
+    ### Initialization of the score ####
+    ####################################
+    score = 0                           #score is supposed to be zero
+    
+    
+    ####################################
+    ### Creation of the SHA256 Hash ####
+    ####################################
+    
+    
+    
+    result = {'grid': grid, 'score': score}
+    
+    
     return result
