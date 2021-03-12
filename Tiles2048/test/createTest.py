@@ -31,6 +31,7 @@ class CreateTest(unittest.TestCase):
         
     def test_create_SadPathTest050(self):
         actualResult = create._create(None)
-        gridScoreHash = hashlib.sha256(actualResult['grid'] + '.' + str(actualResult['score']))
+        encoded = (actualResult['grid'] + '.' + str(actualResult['score'])).encode()
+        gridScoreHash = hashlib.sha256(encoded)
         print(gridScoreHash)
         self.assertEqual(actualResult['hash'], gridScoreHash)
