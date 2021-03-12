@@ -1,4 +1,5 @@
 import random
+import hashlib
 
 def _create(userParms):
     ####################################
@@ -29,7 +30,8 @@ def _create(userParms):
     ### Creation of the SHA256 Hash ####
     ####################################
     
-    integrity = ''
+    encoded = (grid + '.' + str(score).encode())                #concatenates grid and score as str with a '.' between them. Then encodes it
+    integrity = hashlib.sha256(encoded).hexdigest().upper()     #changes the above encoded str into a hashed string with uppercase letters
     
     
     
