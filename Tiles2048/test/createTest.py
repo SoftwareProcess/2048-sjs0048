@@ -9,7 +9,7 @@ class CreateTest(unittest.TestCase):
 
 #checks to make sure the size of the string is correct
     def test_create_SadPathTest010(self):
-        userParms = {'grid': '0000000000000000'}
+        userParms = {'grid': '0000000000000000', 'score': 15}
         actualResult = create._create(userParms)
         self.assertEqual(actualResult, userParms)
         
@@ -43,4 +43,8 @@ class CreateTest(unittest.TestCase):
         sizeOfGrid = 16
         actualResult = create._create(None)
         self.assertEqual(sizeOfGrid, len(actualResult['grid']))
+        
+    def test_create_HappyPathTest040(self):
+        actualResult = create._create(None)
+        self.assertEqual(actualResult['score'], 0)
 """
