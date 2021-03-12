@@ -34,4 +34,4 @@ class CreateTest(unittest.TestCase):
         encoded = (actualResult['grid'] + '.' + str(actualResult['score'])).encode()
         gridScoreHash = hashlib.sha256(encoded)
         print(str(gridScoreHash))
-        self.assertEqual(actualResult['hash'], gridScoreHash)
+        self.assertEqual(actualResult['integrity'], gridScoreHash)
