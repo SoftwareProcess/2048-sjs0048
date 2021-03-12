@@ -33,5 +33,7 @@ class CreateTest(unittest.TestCase):
         actualResult = create._create(None)
         encoded = (actualResult['grid'] + '.' + str(actualResult['score'])).encode()
         gridScoreHash = hash(encoded)
+        print(actualResult['grid'] + '.'+ str(actualResult['score']))
+        print(encoded)
         print(str(gridScoreHash))
         self.assertEqual(actualResult['integrity'], gridScoreHash)
