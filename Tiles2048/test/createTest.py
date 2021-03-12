@@ -32,7 +32,7 @@ class CreateTest(unittest.TestCase):
     def test_create_SadPathTest050(self):
         actualResult = create._create(None)
         encoded = (actualResult['grid'] + '.' + str(actualResult['score'])).encode()
-        gridScoreHash = hash(encoded)
+        gridScoreHash = hashlib.sha3_256(encoded)
         print(actualResult['grid'] + '.'+ str(actualResult['score']))
         print(encoded)
         print(str(gridScoreHash))
