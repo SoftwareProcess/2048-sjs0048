@@ -12,7 +12,7 @@ class ShiftTest(unittest.TestCase):
         actualResult = shift._shift(userParms)
         self.assertEqual(actualResult, "Error: This grid is too small")
         
-    def test_create_ProperGridSize(self):
+    def test_create_ProperGridSize2(self):
         userParms = create._create(None)
         userParms['grid'] = '00000000000000000000000000000000000000000000000000000000000000000000000000000000'
         actualResult = shift._shift(userParms)
