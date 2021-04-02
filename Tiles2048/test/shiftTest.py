@@ -6,18 +6,23 @@ import Tiles2048.shift as shift
 class ShiftTest(unittest.TestCase):
     
     
-    def test_create_ProperGridSize(self):
+    def test_create_GridTooSmall(self):
         userParms = create._create(None)
         userParms['grid'] = '000020020000000'
         actualResult = shift._shift(userParms)
-        self.assertEqual(actualResult, "Error: This grid is too small.")
+        self.assertEqual(actualResult, "Error: This grid is too small. Please check the input string.")
         
-    def test_create_ProperGridSize2(self):
+    def test_create_GridTooLarge(self):
         userParms = create._create(None)
-        userParms['grid'] = '00000000000000000000000000000000000000000000000000000000000000000000000000000000'
+        userParms['grid'] = '00000000000000000'
         actualResult = shift._shift(userParms)
-        self.assertEqual(actualResult, "Error: This grid is too large.")
+        self.assertEqual(actualResult, "Error: This grid is too large. Please check the input string.")
 
+    def test_create_GridTooLarge2(self):
+        userParms = create._create(None)
+        userParms['grid'] = '10241024102410241024102410241024102410241024102410241024102410240'
+        actualResult = shift._shift(userParms)
+        self.assertEqual(actualResult, "Error: This grid is too large. Please check the input string.")
     
     def test_create_StringIntoList(self):
         userParms = create._create(None)
