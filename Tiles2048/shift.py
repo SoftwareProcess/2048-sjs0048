@@ -35,6 +35,10 @@ def _shift(userParms):
                 result.append(1024)
                 i = i + 4
                 continue
+            elif int(temp[i + 1]) == 6:
+                result.append(16)
+                i = i + 2
+                continue
             else:
                 print("Error occured here. Found an independent or stray \"1\".")
                 print(" This could be a result of counting wrong or an invalid board.")
