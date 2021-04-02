@@ -21,7 +21,7 @@ class ShiftTest(unittest.TestCase):
     
     def test_create_StringIntoList(self):
         userParms = create._create(None)
-        userParms['grid'] = '0000200200000000'
+        userParms['grid'] = '1024128048163225651264210242566480'
         actualResult = shift._shift(userParms)
-        comparison = [0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+        comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
         self.assertEqual(actualResult, comparison)  
