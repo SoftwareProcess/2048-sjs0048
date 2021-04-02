@@ -1,7 +1,6 @@
 import unittest
 import hashlib
 import Tiles2048.create as create
-from pickle import NONE
 
 class CreateTest(unittest.TestCase):
 
