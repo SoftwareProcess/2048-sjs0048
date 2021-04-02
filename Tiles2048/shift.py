@@ -8,8 +8,8 @@ def _shift(userParms):
     result = stringIntoList(userParms['grid'])
     
     if len(result) < 16:
-        errorMes = ""
-        return result
+        errorMes = "Error: This grid is too small. Please check the input string."
+        return errorMes
     elif len(result) > 16:
         errorMes = "Error: This grid is too large. Please check the input string."
         return errorMes
