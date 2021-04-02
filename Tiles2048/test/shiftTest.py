@@ -24,4 +24,4 @@ class ShiftTest(unittest.TestCase):
         userParms['grid'] = '0000200200000000'
         actualResult = shift._shift(userParms)
         comparison = [0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.assertEqual(actualResult, comparison)
+        self.assertEqual(actualResult, comparison)  
