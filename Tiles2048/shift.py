@@ -19,9 +19,8 @@ def _shift(userParms):
     
     i = 0
     result = []
-    print(i)
+
     while i < len(temp):
-        print(i)
         if temp[i] == 0:
             result.append(None)
         elif temp[i] == 1:
@@ -75,5 +74,9 @@ def _shift(userParms):
             result.append(8)
             i = i + 1
             continue
+        else:
+            i = i + 1
+            print(i)
+            break
         
     return result
