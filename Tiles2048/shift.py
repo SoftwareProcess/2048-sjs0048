@@ -38,6 +38,8 @@ def _shift(userParms):
             else:
                 print("Error occured here. Found an independent or stray \"1\".")
                 print(" This could be a result of counting wrong or an invalid board.")
+                print(result)
+                break
             
         elif int(temp[i]) == 2:
             if int(temp[i + 1]) == 5:
