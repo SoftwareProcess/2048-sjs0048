@@ -24,3 +24,11 @@ class ShiftTest(unittest.TestCase):
         actualResult = shift._shift(userParms)
         comparison = [[1024, 128, 0, 4], [8, 16, 32, 256], [512, 64, 2, 1024], [256, 64, 8, 0]]
         self.assertEqual(actualResult, comparison)
+        
+    def test_shift_returnTo1DList(self):
+        userParms = create._create(None)
+        userParms['grid'] = '1024128048163225651264210242566480'
+        actualReesult = shift._shift(userParms)
+        comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
+        self.assertEqual(actualResult, comparison)
+        

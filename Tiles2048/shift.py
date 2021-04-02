@@ -118,3 +118,6 @@ def create2DList(input: list) -> list:
     board.append(input[12:])
     
     return board
+
+def convertTo1DList(input: list) -> list:
+    
