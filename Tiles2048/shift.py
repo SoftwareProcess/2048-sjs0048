@@ -16,7 +16,9 @@ def _shift(userParms):
     
     gameboard = create2DList(result)
     
-    return gameboard
+    result = convertTo1DList(gameboard)
+    
+    return result
 
 
 
@@ -109,17 +111,20 @@ def stringIntoList(temp: str) -> list:
 
 
 
-def create2DList(input: list) -> list:
+def create2DList(listIn: list) -> list:
     
     board = []
-    board.append(input[0:4])
-    board.append(input[4:8])
-    board.append(input[8:12])
-    board.append(input[12:])
+    board.append(listIn[0:4])
+    board.append(listIn[4:8])
+    board.append(listIn[8:12])
+    board.append(listIn[12:])
     
     return board
 
-def convertTo1DList(input: list) -> list:
+def convertTo1DList(listIn: list) -> list:
     
-    
-    return None
+    output = []
+    for element in listIn:
+        output.extend(element)
+        
+    return output
