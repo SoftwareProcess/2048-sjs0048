@@ -272,13 +272,23 @@ def shiftRight(listIn: list):
 
 def shiftUp(listIn: list):
     
-    return None
+    newBoard = getTranspose(listIn)
+    newBoard = shiftLeft(newBoard)
+    newBoard = getTranspose(newBoard)
+    
+    return newBoard
 
 
 
 def shiftDown(listIn: list):
     
-    return None
+    newBoard = getTranspose(listIn)
+    newBoard = reverseList(newBoard)
+    newBoard = shiftLeft(newBoard)
+    newBoard = reverseList(newBoard)
+    newBoard = getTranspose(newBoard)
+    
+    return newBoard
 
 
 ####################################################
