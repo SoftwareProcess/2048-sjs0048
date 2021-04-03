@@ -153,7 +153,7 @@ def convertTo1DList(listIn: list) -> list:
 def indicesOfAllZeros(listIn: list) -> list:
     
     output = []                     ###list of possible locations###
-    for i in range(listIn):         ###for every elem in the list###
+    for i in range(len(listIn)):         ###for every elem in the list###
         if listIn[i] == 0:          ###check if the value there is 0###
             output.append(i)        ###if it is, append the index of said element###
 
