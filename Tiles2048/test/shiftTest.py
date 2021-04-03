@@ -62,11 +62,12 @@ class ShiftTest(unittest.TestCase):
         userParms = create._create(None)
         userParms['grid'] = '1024128048163225651264210242566480'
         actualResult = shift._shift(userParms)
-        actualResult2 = shift.convertTo1DList(actualResult)
         
-        for i in range(len(actualResult2)):     ###this is to remove the last column entirely
-            actualResult2[i].pop()
-            
+        for i in range(len(actualResult)):     ###this is to remove the last column entirely
+            actualResult[i].pop()
+    
+        
+        actualResult2 = shift.convertTo1DList(actualResult)         
         testResult = shift.convertTo1DList(actualResult2)        
         comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
         self.assertEqual(testResult, comparison)
