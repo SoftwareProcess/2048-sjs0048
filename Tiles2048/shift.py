@@ -265,6 +265,17 @@ def shiftRight(listIn: list):
 
 
 
+def shiftUp(listIn: list):
+    
+    return None
+
+
+
+def shiftDown(listIn: list):
+    
+    return None
+
+
 ####################################################
 ###Simply checks if there are 4 rows in the list ###
 ### then confirms that there are the same num of ###
