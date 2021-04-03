@@ -1,3 +1,10 @@
+############################################
+##### Edited by Sam Spearman (sjs0048) #####
+######  Today's Date: April 3, 2021   ######
+############################################
+import random
+import hashlib
+
 def _shift(userParms):
     ###############################################
     ###Basic conditionals to make sure the grid####
@@ -19,6 +26,11 @@ def _shift(userParms):
     return gameboard
 
 
+        ####################################################################################################
+        ####################################################################################################
+        #####Below this comment are some of if not all of the functions that are used in the above code#####
+        ####################################################################################################
+        ####################################################################################################
     
 ###############################################
 ##### Takes any string and outputs a list #####
@@ -125,6 +137,7 @@ def create2DList(listIn: list) -> list:
     
     return board                    ###return final game board###
 
+
 ###################################################
 ###We want to convert the 2D list back into a 1D###
 ###because we want to be able to add a number   ###
@@ -135,6 +148,17 @@ def create2DList(listIn: list) -> list:
 ### ensure we know all the available spaces    ####
 ###################################################
 def convertTo1DList(listIn: list) -> list:
+    
+    if len(listIn) != 4:
+        print("The input grid must contain 4 rows.\nPlease try again")
+        return 
+    
+    for i in range(len(listIn)):
+        if (not isinstance(listIn[i], list) or len(listIn[i]) != len(listIn)):
+            print("The input grid must contain the same number of rows as columns.")
+            print("Please Try again")
+            return
+        
     
     output = []                     ###initialize empty list###
     for element in listIn:          ###since every element is a list itself###
@@ -158,3 +182,29 @@ def indicesOfAllZeros(listIn: list) -> list:
             output.append(i)        ###if it is, append the index of said element###
 
     return output                   ###return full list###
+
+
+####################################################
+### This function should take as input a 2D List ###
+###and output the transpose of said 2D List. This###
+###is necessary because shifting vertically can be##
+###the exact same process as shifting horizontally##
+###        after a transpose has occurred.        ##
+####################################################
+def getTranspose(listIn: list) -> list:
+    output = []                                 ###needs new output list###
+    for i in range(len(listIn)):                ###for every row in the original matrix###
+        output.append([])                       ###append a new list inside output###
+        for j in range(len(listIn[i])):         ###for every column in the original matrix###
+            output[i].append(listIn[j][i])      ###append the the ith element in every column###
+            
+    return output                               ###return new column###
+
+def reverseList(listIn: list) -> list:
+    output = []
+    for i in range(len(listIn)):
+        output.append([])
+        for j in range(0, len(listIn[i]), -1):
+            output.append(listIn[i][j])
+            
+    return output
