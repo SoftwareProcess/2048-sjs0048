@@ -124,6 +124,8 @@ def stringIntoList(temp: str) -> list:
 
 
 
+
+
 ###################################################
 ### We know that if the list is not exactly 16 ####
 ### elements then we throw an error. So we can ####
@@ -141,6 +143,8 @@ def create2DList(listIn: list) -> list:
     board.append(listIn[12:])       ###append last set of 4 elements###
     
     return board                    ###return final game board###
+
+
 
 
 ###################################################
@@ -162,6 +166,8 @@ def convertTo1DList(listIn: list) -> list:
         
     return output                   ###return new list###
 
+
+
 ####################################################
 ###In order to randomly fill in a spot after shift##
 ###we must fill a spot with either a 2 or 4. Also###
@@ -178,6 +184,7 @@ def indicesOfAllZeros(listIn: list) -> list:
             output.append(i)        ###if it is, append the index of said element###
 
     return output                   ###return full list###
+
 
 
 ####################################################
@@ -198,6 +205,7 @@ def getTranspose(listIn: list) -> list:
             output[i].append(listIn[j][i])      ###append the the ith element in every column###
             
     return output                               ###return new column###
+
 
 
 #######################################################
@@ -221,6 +229,8 @@ def reverseList(listIn: list) -> list:
             
     return output
 
+
+
 ##########################################################
 ### This function should take in as input a 2D list and###
 ###should check each position individually. If the spot###
@@ -242,6 +252,14 @@ def shiftLeft(listIn: list):
                 newBoard[i][index] = listIn[i][j]       ###put it in the left-most position of the new board###
                 index += 1                              ###increment position on the new board to not overwrite anything###
     return newBoard                         ###return the newBoard###
+
+
+
+def shiftRight(listIn: list):
+    
+    return None
+
+
 
 ####################################################
 ###Simply checks if there are 4 rows in the list ###

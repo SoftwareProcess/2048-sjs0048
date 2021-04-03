@@ -87,6 +87,15 @@ class ShiftTest(unittest.TestCase):
         comparison = [[2, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
         self.assertEqual(testResult, comparison)
         
+    def test_shift_shiftingRight(self):
+        userParms = create._create(None)
+        userParms['grid'] = '0202000000000000'
+        userParms['direction'] = 'left'
+        actualResult = shift._shift(userParms)
+        testResult = shift.shiftRight(actualResult)
+        comparison = [[0, 0, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        self.assertEqual(testResult, comparison)
+        
         
         
         
