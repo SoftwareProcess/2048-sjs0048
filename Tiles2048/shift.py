@@ -141,3 +141,20 @@ def convertTo1DList(listIn: list) -> list:
         output.extend(element)      ###we can use extend on every element. appending it to the output###
         
     return output                   ###return new list###
+
+####################################################
+###In order to randomly fill in a spot after shift##
+###we must fill a spot with either a 2 or 4. Also###
+###we must know where to put it. In order to do ####
+###this we must identify available locations.   ####
+###This is determined by zeros in the 1D list. So###
+###identifying the index of all zeros is vital. ####
+####################################################
+def indicesOfAllZeros(listIn: list) -> list:
+    
+    output = []                     ###list of possible locations###
+    for i in range(listIn):         ###for every elem in the list###
+        if listIn[i] == 0:          ###check if the value there is 0###
+            output.append(i)        ###if it is, append the index of said element###
+
+    return output                   ###return full list###
