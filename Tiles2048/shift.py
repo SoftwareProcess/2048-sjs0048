@@ -12,6 +12,11 @@ def _shift(userParms):
     ###        theory, impossible              ####
     ###############################################
     
+    if 'direction' not in userParms:
+        print("Please specify a direction that you want to shift")
+        return 
+    
+    
     result = stringIntoList(userParms['grid'])
     
     if len(result) < 16:
@@ -148,17 +153,8 @@ def create2DList(listIn: list) -> list:
 ### ensure we know all the available spaces    ####
 ###################################################
 def convertTo1DList(listIn: list) -> list:
-    
-    if len(listIn) != 4:
-        print("The input grid must contain 4 rows.\nPlease try again")
-        return 
-    
-    for i in range(len(listIn)):
-        if (not isinstance(listIn[i], list) or len(listIn[i]) != len(listIn)):
-            print("The input grid must contain the same number of rows as columns.")
-            print("Please Try again")
-            return
         
+    checkForError(listIn)
     
     output = []                     ###initialize empty list###
     for element in listIn:          ###since every element is a list itself###
@@ -177,7 +173,7 @@ def convertTo1DList(listIn: list) -> list:
 def indicesOfAllZeros(listIn: list) -> list:
     
     output = []                     ###list of possible locations###
-    for i in range(len(listIn)):         ###for every elem in the list###
+    for i in range(len(listIn)):    ###for every elem in the list###
         if listIn[i] == 0:          ###check if the value there is 0###
             output.append(i)        ###if it is, append the index of said element###
 
@@ -192,6 +188,9 @@ def indicesOfAllZeros(listIn: list) -> list:
 ###        after a transpose has occurred.        ##
 ####################################################
 def getTranspose(listIn: list) -> list:
+    
+    checkForError(listIn)
+    
     output = []                                 ###needs new output list###
     for i in range(len(listIn)):                ###for every row in the original matrix###
         output.append([])                       ###append a new list inside output###
@@ -200,7 +199,19 @@ def getTranspose(listIn: list) -> list:
             
     return output                               ###return new column###
 
+
+#######################################################
+### This function should take in as input a 2D List ###
+### and output another 2D list where all of the rows###
+### are backwards. This is necessary because in terms##
+### of shifting. Shifting left = shifting right so ####
+### long as when you shift right you reverse the rows##
+###  and then shift left and finally reverse again  ###
+#######################################################
 def reverseList(listIn: list) -> list:
+    
+    checkForError(listIn)
+    
     output = []
     for i in range(len(listIn)):
         output.append([])
@@ -209,3 +220,45 @@ def reverseList(listIn: list) -> list:
             
             
     return output
+
+##########################################################
+### This function should take in as input a 2D list and###
+###should check each position individually. If the spot###
+### is 0 then the newly generate board is not changed. ###
+### However if it is not 0 then we put that at the left###
+### most position in the new board. Then we increment ####
+### in order to not overwrite the recently shifted num.###
+### Do this for every row. Then return the new board.  ###
+##########################################################
+def shiftLeft(listIn: list):
+    
+    checkForError(listIn)           ### check if inputed board is valid###
+    
+    newBoard = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]] ###initialize the new board to all 0s###
+    for i in range(len(listIn)):                        ###for every row in the original board###
+        index = 0                                       ###placeholder in the new board. starts at left-most position###
+        for j in range(len(listIn[i])):                 ###for every column in the original board###
+            if listIn[i][j] != 0:                       ###if a position is not 0 in the old board###
+                newBoard[i][index] = listIn[i][j]       ###put it in the left-most position of the new board###
+                index += 1                              ###increment position on the new board to not overwrite anything###
+    return newBoard                         ###return the newBoard###
+
+####################################################
+###Simply checks if there are 4 rows in the list ###
+### then confirms that there are the same num of ###
+###          columns as there are rows.          ###
+####################################################
+def checkForError(listIn: list):
+    
+    
+    if len(listIn) != 4:                    
+        print("The input grid must contain 4 rows.\nPlease try again")
+        return 
+    
+    for i in range(len(listIn)):
+        if (not isinstance(listIn[i], list) or len(listIn[i]) != len(listIn)):
+            print("The input grid must contain the same number of rows as columns.")
+            print("Please Try again")
+            return
+        
+        
