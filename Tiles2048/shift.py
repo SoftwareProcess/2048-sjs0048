@@ -19,8 +19,6 @@ def _shift(userParms):
     return gameboard
 
 
-
-
     
 ###############################################
 ##### Takes any string and outputs a list #####
@@ -109,20 +107,37 @@ def stringIntoList(temp: str) -> list:
 
 
 
+###################################################
+### We know that if the list is not exactly 16 ####
+### elements then we throw an error. So we can ####
+### evenly subdivide the list into 4 rows with ####
+### 1 column for each row (2D list). We do this####
+### by creating a new list that appends every 4####
+### elements (as its own list) to a new list   ####
+###################################################
 def create2DList(listIn: list) -> list:
     
-    board = []
-    board.append(listIn[0:4])
-    board.append(listIn[4:8])
-    board.append(listIn[8:12])
-    board.append(listIn[12:])
+    board = []                      ###initialize empty list###
+    board.append(listIn[0:4])       ###append first set of 4 elements###
+    board.append(listIn[4:8])       ###append second set of 4 elements###
+    board.append(listIn[8:12])      ###append third set of 4 elements###
+    board.append(listIn[12:])       ###append last set of 4 elements###
     
-    return board
+    return board                    ###return final game board###
 
+###################################################
+###We want to convert the 2D list back into a 1D###
+###because we want to be able to add a number   ###
+###every time we shift. However, adding a number###
+###to a 2D list is more difficult to keep track ###
+###of because we need to keep track of both row ###
+### and column. So we convert it back to 1D to ####
+### ensure we know all the available spaces    ####
+###################################################
 def convertTo1DList(listIn: list) -> list:
     
-    output = []
-    for element in listIn:
-        output.extend(element)
+    output = []                     ###initialize empty list###
+    for element in listIn:          ###since every element is a list itself###
+        output.extend(element)      ###we can use extend on every element. appending it to the output###
         
-    return output
+    return output                   ###return new list###
