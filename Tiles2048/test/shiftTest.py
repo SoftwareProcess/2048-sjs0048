@@ -66,11 +66,9 @@ class ShiftTest(unittest.TestCase):
         for i in range(len(actualResult)):     ###this is to remove the last column entirely
             actualResult[i].pop()
     
-        
-        actualResult2 = shift.convertTo1DList(actualResult)         
-        testResult = shift.convertTo1DList(actualResult2)        
+        actualResult2 = shift.convertTo1DList(actualResult)       
         comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
-        self.assertEqual(testResult, comparison)
+        self.assertEqual(actualResult2, comparison)
         
         
         
