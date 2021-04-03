@@ -16,8 +16,6 @@ def _shift(userParms):
     
     gameboard = create2DList(result)
     
-    result = convertTo1DList(gameboard)
-    
     return result
 
 
