@@ -47,7 +47,7 @@ class ShiftTest(unittest.TestCase):
         userParms['grid'] = '000200400102400025651232'
         result = shift._shift(userParms)
         testResult = shift.getTranspose(result)
-        comparison = [[0, 0, 0, 0], [0, 0, 1024, 256], [0, 4, 0, 512], [0, 256, 512, 32]]
+        comparison = [[0, 0, 0, 0], [0, 0, 1024, 256], [0, 4, 0, 512], [2, 0, 0, 32]]
         self.assertEqual(testResult, comparison)
         
     def test_shift_inverseRowsOf2DList(self):
