@@ -2,7 +2,7 @@ import unittest
 import hashlib
 import Tiles2048.create as create
 import Tiles2048.shift as shift
-from Tiles2048.shift import import convertTo1DList
+from Tiles2048.shift import convertTo1DList
 
 class ShiftTest(unittest.TestCase):
     
