@@ -84,10 +84,10 @@ def stringIntoList(temp: str) -> list:
                     output.append(256)      ###add 256 to the list###
                     i = i + 3               ###increment i by 3 and continue at top of loop###
                     continue
-            else:
-                output.append(2)        ###if next digit is not 5###
-                i = i + 1               ###add 2 to the list and incrememnt i by 1###
-                continue                ###continue at top of loop###
+                else:
+                    output.append(2)        ###if next digit is not 5###
+                    i = i + 1               ###add 2 to the list and incrememnt i by 1###
+                    continue                ###continue at top of loop###
             
         elif int(temp[i]) == 3:         ###if first digit is 3###
             output.append(32)           ###add 32 to list and increment i by 2###
