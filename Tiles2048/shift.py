@@ -257,7 +257,11 @@ def shiftLeft(listIn: list):
 
 def shiftRight(listIn: list):
     
-    return None
+    newBoard = reverseList(listIn)
+    newBoard = shiftLeft(newBoard)
+    newBoard = reverseList(newBoard)
+    
+    return newBoard
 
 
 
