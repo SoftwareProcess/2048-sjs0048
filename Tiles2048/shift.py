@@ -80,13 +80,10 @@ def stringIntoList(temp: str) -> list:
                 continue
             
         elif int(temp[i]) == 2:         ###if first digit is 2###
-            try:
                 if int(temp[i + 1]) == 5:   ###if next digit is 5 ###
                     output.append(256)      ###add 256 to the list###
                     i = i + 3               ###increment i by 3 and continue at top of loop###
                     continue
-            except IndexError:
-                pass
             else:
                 output.append(2)        ###if next digit is not 5###
                 i = i + 1               ###add 2 to the list and incrememnt i by 1###
