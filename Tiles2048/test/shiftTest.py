@@ -111,7 +111,7 @@ class ShiftTest(unittest.TestCase):
         userParms['direction'] = 'left'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftDown(actualResult)
-        comparison = [[4, 2, 0, 2], [0, 8, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        comparison = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 0], [4, 8, 0, 2]]
         self.assertEqual(testResult, comparison)
            
         
