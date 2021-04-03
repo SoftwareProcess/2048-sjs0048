@@ -247,19 +247,13 @@ def reverseList(listIn: list) -> list:
 ##########################################################
 def shiftLeft(listIn: list):
     
-    checkForError(listIn)           ### check if inputed board is valid###
+    newBoard = shift(listIn)
     
-    newBoard = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]] ###initialize the new board to all 0s###
-    for i in range(len(listIn)):                        ###for every row in the original board###
-        index = 0                                       ###placeholder in the new board. starts at left-most position###
-        for j in range(len(listIn[i])):                 ###for every column in the original board###
-            if listIn[i][j] != 0:                       ###if a position is not 0 in the old board###
-                newBoard[i][index] = listIn[i][j]       ###put it in the left-most position of the new board###
-                index += 1                              ###increment position on the new board to not overwrite anything###
     return newBoard                         ###return the newBoard###
 
 
-
+##########################################################
+###
 def shiftRight(listIn: list):
     
     newBoard = reverseList(listIn)
@@ -291,6 +285,19 @@ def shiftDown(listIn: list):
     return newBoard
 
 
+def shift(listIn: list):
+    
+    checkForError(listIn)           ### check if inputed board is valid###
+    
+    newBoard = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]] ###initialize the new board to all 0s###
+    for i in range(len(listIn)):                        ###for every row in the original board###
+        index = 0                                       ###placeholder in the new board. starts at left-most position###
+        for j in range(len(listIn[i])):                 ###for every column in the original board###
+            if listIn[i][j] != 0:                       ###if a position is not 0 in the old board###
+                newBoard[i][index] = listIn[i][j]       ###put it in the left-most position of the new board###
+                index += 1                              ###increment position on the new board to not overwrite anything###
+    return newBoard
+    
 ####################################################
 ###Simply checks if there are 4 rows in the list ###
 ### then confirms that there are the same num of ###
