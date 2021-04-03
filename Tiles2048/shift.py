@@ -206,5 +206,7 @@ def reverseList(listIn: list) -> list:
         output.append([])
         for j in range(0, len(listIn[i]), -1):
             output.append(listIn[i][j])
+            print(listIn[i][j])
+            
             
     return output
