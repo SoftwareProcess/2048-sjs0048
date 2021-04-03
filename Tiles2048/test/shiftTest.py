@@ -36,7 +36,8 @@ class ShiftTest(unittest.TestCase):
     def test_shift_listOfIndicesWithZero(self):
         userParms = create._create(None)
         userParms['grid'] = '000200400102400025651232'
-        actualResult = shift._shift(userParms)
-        actualResult2 = shift.indicesOfAllZeros(actualResult)
+        result = shift._shift(userParms)
+        resultAs1DList = shift.convertTo1DList(result)
+        testResult = shift.indicesOfAllZeros(resultAs1DList)
         comparison = [0, 1, 2, 4, 5, 7, 8, 10, 11, 12]
-        self.assertEqual(actualResult, comparison)
+        self.assertEqual(testResult, comparison)
