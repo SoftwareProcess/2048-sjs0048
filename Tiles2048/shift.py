@@ -16,7 +16,7 @@ def _shift(userParms):
     
     gameboard = create2DList(result)
     
-    return result
+    return gameboard
 
 
 
