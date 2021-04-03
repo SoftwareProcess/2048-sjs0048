@@ -2,6 +2,7 @@ import unittest
 import hashlib
 import Tiles2048.create as create
 import Tiles2048.shift as shift
+from Tiles2048.shift import import convertTo1DList
 
 class ShiftTest(unittest.TestCase):
     
@@ -30,7 +31,7 @@ class ShiftTest(unittest.TestCase):
         userParms['grid'] = '1024128048163225651264210242566480'
         test = shift
         actualResult = shift._shift(userParms).convertTo1DList()
-        actualResult2 = test.convertTo1DList(actualResult)
+        actualResult2 = convertTo1DList(actualResult)
         comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
         self.assertEqual(actualResult2, comparison)
         
