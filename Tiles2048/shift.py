@@ -80,6 +80,7 @@ def stringIntoList(temp: str) -> list:
                 continue
             
         elif int(temp[i]) == 2:         ###if first digit is 2###
+            if i != len(temp) - 1:              ###got error when 2 was the last element. so this is necessary###
                 if int(temp[i + 1]) == 5:   ###if next digit is 5 ###
                     output.append(256)      ###add 256 to the list###
                     i = i + 3               ###increment i by 3 and continue at top of loop###
@@ -88,6 +89,10 @@ def stringIntoList(temp: str) -> list:
                     output.append(2)        ###if next digit is not 5###
                     i = i + 1               ###add 2 to the list and incrememnt i by 1###
                     continue                ###continue at top of loop###
+            else:
+                output.append(2)        ###if next digit is not 5###
+                i = i + 1               ###add 2 to the list and incrememnt i by 1###
+                continue                ###continue at top of loop###
             
         elif int(temp[i]) == 3:         ###if first digit is 3###
             output.append(32)           ###add 32 to list and increment i by 2###
