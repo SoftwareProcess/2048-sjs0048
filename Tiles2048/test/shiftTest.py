@@ -80,38 +80,38 @@ class ShiftTest(unittest.TestCase):
         
     def test_shift_ShiftingLeft(self):
         userParms = create._create(None)
-        userParms['grid'] = '0202000000000000'
+        userParms['grid'] = '02022560025600002002'
         userParms['direction'] = 'left'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftLeft(actualResult)
-        comparison = [[2, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        comparison = [[4, 0, 0, 0], [512, 0, 0, 0], [0, 0, 0, 0], [4, 0, 0, 0]]
         self.assertEqual(testResult, comparison)
         
     def test_shift_shiftingRight(self):
         userParms = create._create(None)
-        userParms['grid'] = '0202000000000000'
+        userParms['grid'] = '0202000000001024001024'
         userParms['direction'] = 'left'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftRight(actualResult)
-        comparison = [[0, 0, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        comparison = [[0, 0, 0, 4], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2048]]
         self.assertEqual(testResult, comparison)
           
     def test_shift_shiftingUp(self):
         userParms = create._create(None)
-        userParms['grid'] = '0000000000000202'
+        userParms['grid'] = '4040404000000202'
         userParms['direction'] = 'left'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftUp(actualResult)
-        comparison = [[0, 2, 0, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        comparison = [[8, 2, 8, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
         self.assertEqual(testResult, comparison)
         
     def test_shift_shiftingDown(self):
         userParms = create._create(None)
-        userParms['grid'] = '0202000000000000'
+        userParms['grid'] = '2202240004000000'
         userParms['direction'] = 'left'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftDown(actualResult)
-        comparison = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 2]]
+        comparison = [[4, 2, 0, 2], [0, 8, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
         self.assertEqual(testResult, comparison)
            
         

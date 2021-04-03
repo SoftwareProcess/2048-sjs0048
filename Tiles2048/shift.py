@@ -87,11 +87,11 @@ def stringIntoList(temp: str) -> list:
                     continue
                 else:
                     output.append(2)        ###if next digit is not 5###
-                    i = i + 1               ###add 2 to the list and incrememnt i by 1###
+                    i = i + 1               ###add 2 to the list and increment i by 1###
                     continue                ###continue at top of loop###
             else:
                 output.append(2)        ###if next digit is not 5###
-                i = i + 1               ###add 2 to the list and incrememnt i by 1###
+                i = i + 1               ###add 2 to the list and increment i by 1###
                 continue                ###continue at top of loop###
             
         elif int(temp[i]) == 3:         ###if first digit is 3###
@@ -115,7 +115,7 @@ def stringIntoList(temp: str) -> list:
             continue
         
         elif int(temp[i]) == 8:         ###if first digit is 8 then add 8 to list###
-            output.append(8)            ###incrmement by 1 and continue loop###
+            output.append(8)            ###increment by 1 and continue loop###
             i = i + 1
             continue
         
@@ -237,23 +237,25 @@ def reverseList(listIn: list) -> list:
 
 
 ##########################################################
-### This function should take in as input a 2D list and###
-###should check each position individually. If the spot###
-### is 0 then the newly generate board is not changed. ###
-### However if it is not 0 then we put that at the left###
-### most position in the new board. Then we increment ####
-### in order to not overwrite the recently shifted num.###
-### Do this for every row. Then return the new board.  ###
+###Shift left simply shifts the tiles, combines all the###
+###numbers that it can, and then shifts left once again###
+### in order for there to be no blank spots left open  ###
 ##########################################################
 def shiftLeft(listIn: list):
     
     newBoard = shift(listIn)
+    newBoard = combine(newBoard)
+    newBoard = shift(newBoard)
     
     return newBoard                         ###return the newBoard###
 
 
 ##########################################################
-###
+###Shift right is simply left-shift that's reversed both##
+###before and after the shift. This results in the same###
+########             board anyways.              #########
+##########################################################
+
 def shiftRight(listIn: list):
     
     newBoard = reverseList(listIn)
@@ -263,7 +265,11 @@ def shiftRight(listIn: list):
     return newBoard
 
 
-
+##########################################################
+###Shift Up is a shift that gets the transpose of the ####
+###board both before and after shifting left. The end ####
+########          result is the same              ########
+##########################################################
 def shiftUp(listIn: list):
     
     newBoard = getTranspose(listIn)
@@ -274,6 +280,14 @@ def shiftUp(listIn: list):
 
 
 
+##########################################################
+### Shift down is the most complicated. It requires a  ###
+### Transpose before being reversed. Then the board is ###
+### shifted left. Afterwards the board is reversed once###
+### again and is then transposed again. The board must ###
+###be manipulated in that exact order or the end result###
+#####        will not be the desire output           #####
+##########################################################
 def shiftDown(listIn: list):
     
     newBoard = getTranspose(listIn)
@@ -285,6 +299,16 @@ def shiftDown(listIn: list):
     return newBoard
 
 
+
+##########################################################
+### This function should take in as input a 2D list and###
+###should check each position individually. If the spot###
+### is 0 then the newly generate board is not changed. ###
+### However if it is not 0 then we put that at the left###
+### most position in the new board. Then we increment ####
+### in order to not overwrite the recently shifted num.###
+### Do this for every row. Then return the new board.  ###
+##########################################################
 def shift(listIn: list):
     
     checkForError(listIn)           ### check if inputed board is valid###
@@ -298,6 +322,29 @@ def shift(listIn: list):
                 index += 1                              ###increment position on the new board to not overwrite anything###
     return newBoard
     
+    
+##########################################################
+### This function's job is to check elements that are  ###
+### directly next to each other and combine them if the###
+### numbers are equal. If they are not it ignores the  ###
+### number and goes on to the next pair. Does this for ###
+###  every number in each row. It only needs to worry  ###
+###    about rows because of matrix manipulation       ###
+##########################################################
+def combine(listIn: list):
+    
+    for i in range(len(listIn)):
+        for j in range(len(listIn[i]) - 1):
+
+            if listIn[i][j] == listIn[i][j + 1]:
+
+                listIn[i][j] = listIn[i][j] * 2
+                listIn[i][j + 1] = 0
+                
+    return listIn            
+
+    
+
 ####################################################
 ###Simply checks if there are 4 rows in the list ###
 ### then confirms that there are the same num of ###
