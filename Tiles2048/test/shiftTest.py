@@ -68,7 +68,7 @@ class ShiftTest(unittest.TestCase):
     
         actualResult2 = shift.convertTo1DList(actualResult)       
         comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
-        self.assertEqual(actualResult2, comparison)
+        self.assertNotEqual(actualResult2, comparison)
         
         
         
