@@ -57,3 +57,26 @@ class ShiftTest(unittest.TestCase):
         testResult = shift.reverseList(result)
         comparison = [[2, 0, 0, 0], [0, 4, 0, 0], [0, 0, 1024, 0], [32, 512, 256, 0]]
         self.assertEqual(testResult, comparison)
+        
+    def test_shift_SadPathReturnto1DList(self):
+        userParms = create._create(None)
+        userParms['grid'] = '1024128048163225651264210242566480'
+        actualResult = shift._shift(userParms)
+        comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
+        self.assertNotEqual(actualResult, comparison)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
