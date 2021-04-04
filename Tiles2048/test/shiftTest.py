@@ -2,6 +2,7 @@ import unittest
 import hashlib
 import Tiles2048.create as create
 import Tiles2048.shift as shift
+from Tiles2048.shift import stringIntoList
 
 class ShiftTest(unittest.TestCase):
     
@@ -42,7 +43,8 @@ class ShiftTest(unittest.TestCase):
         userParms['integrity'] = integrity
         actualResult = shift._shift(userParms)
         comparison = [[1024, 128, 0, 4], [8, 16, 32, 256], [512, 64, 2, 1024], [256, 64, 8, 0]]
-        self.assertEqual(shift.create2DList(stringIntoList(actualResult['grid'])), comparison)
+        test = stringIntoList(actualResult['grid'])
+        self.assertEqual(shift.create2DList(test), comparison)
        
     def test_shift_returnTo1DList(self):
         userParms = {}
