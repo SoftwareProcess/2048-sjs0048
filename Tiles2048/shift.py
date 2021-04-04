@@ -26,7 +26,8 @@ def _shift(userParms):
         output['status'] = 'error: invalid direction'
         return output
     
-    if userParms['integrity'] != hashlib.sha256(str(userParms['grid']) + '.' + str(userParms['score'])).hexdigest().upper():
+    userEncoded = (str(userParms['grid']) + '.' + str(userParms['score'])).encode()
+    if userParms['integrity'] != hashlib.sha256(userEncoded).hexdigest().upper():
         output['status'] = 'error: bad integrity value'
         return output
     
