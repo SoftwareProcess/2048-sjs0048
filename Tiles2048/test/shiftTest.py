@@ -15,7 +15,9 @@ class ShiftTest(unittest.TestCase):
         integrity = hashlib.sha256(encoded).hexdigest().upper()
         userParms['integrity'] = integrity
         actualResult = shift._shift(userParms)
-        self.assertEqual(actualResult, "status: \'error: invalid grid\'")
+        testVal = {}
+        testVal['status'] = 'error: invalid grid'
+        self.assertEqual(actualResult, testVal['status'])
 
     def test_shift_GridTooLarge(self):
         userParms = {}
@@ -26,7 +28,9 @@ class ShiftTest(unittest.TestCase):
         integrity = hashlib.sha256(encoded).hexdigest().upper()
         userParms['integrity'] = integrity
         actualResult = shift._shift(userParms)
-        self.assertEqual(actualResult, "error: invalid grid")
+        testVal = {}
+        testVal['status'] = 'error: invalid grid'
+        self.assertEqual(actualResult, testVal['status'])
         
     def test_shift_ListInto2dList(self):
         userParms = {}
