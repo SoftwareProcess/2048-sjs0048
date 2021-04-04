@@ -20,9 +20,9 @@ def _shift(userParms):
         output['status'] = 'error: missing grid'
         return output
     
-    if (userParms['direction'].lower() != 'up' or userParms['direction'].lower() != 'down'
-          or userParms['direction'].lower() != 'right' or userParms['direction'].lower() != 'left'
-          or userParms['direction'] != ''):
+    if (userParms['direction'].lower() != 'up' and userParms['direction'].lower() != 'down'
+          and userParms['direction'].lower() != 'right' and userParms['direction'].lower() != 'left'
+          and userParms['direction'] != ''):
         output['status'] = 'error: invalid direction'
         return output
     
