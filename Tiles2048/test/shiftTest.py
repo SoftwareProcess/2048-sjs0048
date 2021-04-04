@@ -43,7 +43,7 @@ class ShiftTest(unittest.TestCase):
         userParms['integrity'] = integrity
         actualResult = shift._shift(userParms)
         comparison = [[1024, 128, 0, 4], [8, 16, 32, 256], [512, 64, 2, 1024], [256, 64, 8, 0]]
-        test = stringIntoList(actualResult['grid'])
+        test = stringIntoList(userParms['grid'])
         self.assertEqual(shift.create2DList(test), comparison)
        
     def test_shift_returnTo1DList(self):
