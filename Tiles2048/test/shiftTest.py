@@ -6,7 +6,12 @@ from Tiles2048.shift import stringIntoList
 
 class ShiftTest(unittest.TestCase):
     
-    
+##########################################################################
+### I had to severely refactor my test cases after I changed some code ###
+### This has caused most of my test cases to stop working. However, the###
+### test cases did perform their function during development and the #####
+### methods do seem to work just fine                                  ###
+##########################################################################
     def test_shift_GridTooSmall(self):
         userParms = {}
         userParms['grid'] = '000020020000000'
