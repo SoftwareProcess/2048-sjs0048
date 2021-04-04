@@ -6,7 +6,7 @@ import Tiles2048.shift as shift
 class ShiftTest(unittest.TestCase):
     
     
-    '''def test_shift_GridTooSmall(self):
+    def test_shift_GridTooSmall(self):
         userParms = create._create(None)
         userParms['grid'] = '000020020000000'
         userParms['direction'] = 'left'
@@ -112,75 +112,10 @@ class ShiftTest(unittest.TestCase):
         actualResult = shift._shift(userParms)
         testResult = shift.shiftDown(actualResult)
         comparison = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 0], [4, 8, 0, 2]]
-        self.assertEqual(testResult, comparison)'''
+        self.assertEqual(testResult, comparison)
            
         
-    def test_shift_Acceptance1(self):
-        userParms = create._create(None)
-        userParms['grid'] = '2222444488881616160'
-        userParms['score'] = 9600
-        userParms['direction'] = 'left'
-        userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'        
-        actualResult = shift._shift(userParms)
 
-        comparison = {} 
-        comparison['grid'] = '44008800161600321602'
-        comparison['score'] = 9688
-        comparison['integrity'] = 'FD4750403CBC401D7FC64E9ADCCEF7B24981481A24CFB23F274F3DC38B524883'
-        comparison['status'] = 'ok'
-        self.assertEqual(actualResult, comparison)
-            
-            
-    def test_shift_Acceptance2(self):
-        userParms = create._create(None)
-        userParms['grid'] = '2222444488881616160'
-        userParms['score'] = 9600
-        userParms['direction'] = 'up'
-        userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'        
-        actualResult = shift._shift(userParms)
-
-        comparison = {} 
-        comparison['grid'] = '2222444488881616164'
-        comparison['score'] = 9600
-        comparison['integrity'] = 'D0322C9B4DCAE2E0001F7BF3F24EFFE875038EA2A81660F77D14C29D7D960685'
-        comparison['status'] = 'lose'
-        self.assertEqual(actualResult, comparison)
-            
-            
-    def test_shift_Acceptance3(self):
-        userParms = create._create(None)
-        userParms['grid'] = '0000004024402020'
-        userParms['score'] = 4
-        userParms['direction'] = ''
-        userParms['integrity'] = '2A2EF0D1BEA22B9D6AB67C482BFF954F93F6A3617EF052E11DD8776BFFB7325A'        
-        actualResult = shift._shift(userParms)
-
-        comparison = {} 
-        comparison['grid'] = '4000000000804420'
-        comparison['score'] = 16
-        comparison['integrity'] = '96AE2C09F18145AB3B76655B47F6F9B902A48077B2DB9D365D747A801981B949'
-        comparison['status'] = 'ok'
-        self.assertEqual(actualResult, comparison)
-            
-        
-    def test_shift_Acceptance4(self):
-        userParms = create._create(None)
-        userParms['grid'] = '1024102400000000000000'
-        userParms['score'] = 129024
-        userParms['direction'] = 'left'
-        userParms['integrity'] = '18FF0FE71EB8CCFA82556511578B321D0B69A8E2FD5202EBD3A949EB35CB3C45'        
-        actualResult = shift._shift(userParms)
-
-        comparison = {} 
-        comparison['grid'] = '2048000000000000002'
-        comparison['score'] = 131072
-        comparison['integrity'] = '51A7C485E859A94F5FFCCB25C682A66D8671ABB9AF1682756233C17499B4DE68'
-        comparison['status'] = 'win'
-        self.assertEqual(actualResult, comparison)
-                
-        
-        
-        
         
         
         
