@@ -109,7 +109,10 @@ class ShiftTest(unittest.TestCase):
         userParms['integrity'] = integrity
         actualResult = shift._shift(userParms)
         comparison = [[4, 0, 0, 0], [512, 0, 0, 0], [0, 0, 0, 0], [4, 0, 0, 0]]
-        self.assertEqual(actualResult['grid'], shift.convertTo1DList(comparison))
+        test = shift.convertTo1DList(userParms['grid'])
+        test2 = shift.create2DList(test)
+        test3, score = shift.shiftLeft(test2, userParms['score'])
+        self.assertEqual(test3, comparison)
         
     def test_shift_shiftingRight(self):
         userParms = {}
