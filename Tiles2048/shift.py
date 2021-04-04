@@ -6,7 +6,7 @@ import random
 import hashlib
 
 
-score = 0
+
 
 def _shift(userParms):
     ###############################################
@@ -14,7 +14,7 @@ def _shift(userParms):
     ### does not violate any rules as described ###
     ###      by the customer specifications     ###
     ###############################################
-    
+    score = 0
     output = {}
     if 'grid' not in userParms:
         output['status'] = 'error: missing grid'
@@ -53,13 +53,13 @@ def _shift(userParms):
         ###        direction. Default is down.       ###
         ################################################
     if userParms['direction'].lower() == 'up':
-        newBoard = shiftUp(gameboard)
+        newBoard, score = shiftUp(gameboard, score)
     elif userParms['direction'].lower() == 'right':
-        newBoard = shiftDown(gameboard)
+        newBoard, score = shiftDown(gameboard, score)
     elif userParms['direction'].lower() == 'left':
-        newBoard = shiftDown(gameboard)
+        newBoard, score = shiftLeft(gameboard, score)
     else:
-        newBoard = shiftDown(gameboard)
+        newBoard, score = shiftDown(gameboard, score)
     
     boardAs1D = convertTo1DList(newBoard)
     openSpots = indicesOfAllZeros(boardAs1D)
@@ -310,13 +310,13 @@ def reverseList(listIn: list) -> list:
 ###numbers that it can, and then shifts left once again###
 ### in order for there to be no blank spots left open  ###
 ##########################################################
-def shiftLeft(listIn: list):
+def shiftLeft(listIn: list, score: int):
     
     newBoard = shift(listIn)
-    newBoard = combine(newBoard)
+    newBoard, score = combine(newBoard, score)
     newBoard = shift(newBoard)
     
-    return newBoard                         ###return the newBoard###
+    return newBoard, score                   ###return the newBoard###
 
 
 ##########################################################
@@ -325,13 +325,13 @@ def shiftLeft(listIn: list):
 ########             board anyways.              #########
 ##########################################################
 
-def shiftRight(listIn: list):
+def shiftRight(listIn: list, score: int):
     
     newBoard = reverseList(listIn)
-    newBoard = shiftLeft(newBoard)
+    newBoard, score = shiftLeft(newBoard, score)
     newBoard = reverseList(newBoard)
     
-    return newBoard
+    return newBoard, score
 
 
 ##########################################################
@@ -339,13 +339,13 @@ def shiftRight(listIn: list):
 ###board both before and after shifting left. The end ####
 ########          result is the same              ########
 ##########################################################
-def shiftUp(listIn: list):
+def shiftUp(listIn: list, score: int):
     
     newBoard = getTranspose(listIn)
-    newBoard = shiftLeft(newBoard)
+    newBoard, score = shiftLeft(newBoard, score)
     newBoard = getTranspose(newBoard)
     
-    return newBoard
+    return newBoard, score
 
 
 
@@ -357,15 +357,13 @@ def shiftUp(listIn: list):
 ###be manipulated in that exact order or the end result###
 #####        will not be the desire output           #####
 ##########################################################
-def shiftDown(listIn: list):
+def shiftDown(listIn: list, score: int):
     
     newBoard = getTranspose(listIn)
-    newBoard = reverseList(newBoard)
-    newBoard = shiftLeft(newBoard)
-    newBoard = reverseList(newBoard)
+    newBoard, score = shiftRight(newBoard, score)
     newBoard = getTranspose(newBoard)
     
-    return newBoard
+    return newBoard, score
 
 
 
@@ -400,7 +398,7 @@ def shift(listIn: list):
 ###  every number in each row. It only needs to worry  ###
 ###    about rows because of matrix manipulation       ###
 ##########################################################
-def combine(listIn: list):
+def combine(listIn: list, score: int):
     
     for i in range(len(listIn)):
         for j in range(len(listIn[i]) - 1):
@@ -412,7 +410,7 @@ def combine(listIn: list):
                 score += listIn[i][j]
                 
                 
-    return listIn            
+    return listIn, score            
 
     
 ####################################################
