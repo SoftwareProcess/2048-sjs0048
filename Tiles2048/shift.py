@@ -93,7 +93,7 @@ def _shift(userParms):
     elif boardAs1D == result or 0 not in boardAs1D:
         output['status'] = 'lose'
     else:
-        output['status'] = 'okay'
+        output['status'] = 'ok'
     
     
     
