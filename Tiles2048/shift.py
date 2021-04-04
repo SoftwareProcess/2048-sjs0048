@@ -10,9 +10,9 @@ score = 0
 
 def _shift(userParms):
     ###############################################
-    ###Basic conditionals to make sure the grid####
-    ####  cannot be a size that should be, in  ####
-    ###        theory, impossible              ####
+    ###Basic conditionals to make sure the grid ###
+    ### does not violate any rules as described ###
+    ###      by the customer specifications     ###
     ###############################################
     
     output = {}
@@ -31,7 +31,9 @@ def _shift(userParms):
         output['status'] = 'error: bad integrity value'
         return output
     
-    if userParms['score'] %2 != 0 or userParms['score'] is not int:
+    #print(type(userParms['score'])) ### just a test###
+    
+    if userParms['score'] %2 != 0 or type(userParms['score']) is not int:
         output['status'] = 'error: invalid score'
         return output
     else:
