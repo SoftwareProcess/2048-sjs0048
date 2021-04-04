@@ -98,24 +98,7 @@ class ShiftTest(unittest.TestCase):
         testResult = shift.reverseList(result)
         comparison = [[2, 0, 0, 0], [0, 4, 0, 0], [0, 0, 1024, 0], [32, 512, 256, 0]]
         self.assertEqual(testResult, comparison)
-        
-    def test_shift_SadPathReturnto1DList(self):
-        userParms = {}
-        userParms['grid'] = '1024128048163225651264210242566480'
-        userParms['direction'] = 'left'
-        userParms['score'] = 4
-        encoded = (userParms['grid']  + '.' + str(userParms['score'])).encode()
-        integrity = hashlib.sha256(encoded).hexdigest().upper()
-        userParms['integrity'] = integrity
-        actualResult = shift._shift(userParms)
-        
-        for i in range(len(actualResult)):     ###this is to remove the last column entirely
-            actualResult[i].pop()
-    
-        actualResult2 = shift.convertTo1DList(actualResult)       
-        comparison = [1024, 128, 0, 4, 8, 16, 32, 256, 512, 64, 2, 1024, 256, 64, 8, 0]
-        self.assertNotEqual(actualResult2, comparison)
-        
+               
     def test_shift_ShiftingLeft(self):
         userParms = {}
         userParms['grid'] = '02022560025600002002'
