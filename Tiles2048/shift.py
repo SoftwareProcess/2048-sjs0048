@@ -76,7 +76,7 @@ def _shift(userParms):
     
     newGrid = ''
     for element in boardAs1D:
-        newGrid += element
+        newGrid += str(element)
     
     output['grid'] = newGrid
     
