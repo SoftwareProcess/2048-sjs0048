@@ -119,7 +119,7 @@ class ShiftTest(unittest.TestCase):
         userParms = create._create(None)
         userParms['grid'] = '2222444488881616160'
         userParms['score'] = 9600
-        userParms['direction'] = 'up'
+        userParms['direction'] = 'left'
         userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'        
         actualResult = shift._shift(userParms)
 
@@ -135,7 +135,7 @@ class ShiftTest(unittest.TestCase):
         userParms = create._create(None)
         userParms['grid'] = '2222444488881616160'
         userParms['score'] = 9600
-        userParms['direction'] = 'left'
+        userParms['direction'] = 'up'
         userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'        
         actualResult = shift._shift(userParms)
 
