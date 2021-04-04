@@ -90,7 +90,7 @@ class ShiftTest(unittest.TestCase):
     def test_shift_shiftingRight(self):
         userParms = create._create(None)
         userParms['grid'] = '0202000000001024001024'
-        userParms['direction'] = 'left'
+        userParms['direction'] = 'right'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftRight(actualResult)
         comparison = [[0, 0, 0, 4], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2048]]
@@ -99,7 +99,7 @@ class ShiftTest(unittest.TestCase):
     def test_shift_shiftingUp(self):
         userParms = create._create(None)
         userParms['grid'] = '4040404000000202'
-        userParms['direction'] = 'left'
+        userParms['direction'] = 'up'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftUp(actualResult)
         comparison = [[8, 2, 8, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
@@ -108,16 +108,60 @@ class ShiftTest(unittest.TestCase):
     def test_shift_shiftingDown(self):
         userParms = create._create(None)
         userParms['grid'] = '2202240004000000'
-        userParms['direction'] = 'left'
+        userParms['direction'] = 'down'
         actualResult = shift._shift(userParms)
         testResult = shift.shiftDown(actualResult)
         comparison = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 0], [4, 8, 0, 2]]
         self.assertEqual(testResult, comparison)
            
         
-        
-        
-        
+    def test_shift_Acceptance1(self):
+        userParms = create._create(None)
+        userParms['grid'] = '2222444488881616160'
+        userParms['score'] = 9600
+        userParms['direction'] = 'up'
+        userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'        
+        actualResult = shift._shift(userParms)
+
+        comparison = {} 
+        comparison['grid'] = '44008800161600321602'
+        comparison['score'] = 9688
+        comparison['integrity'] = 'FD4750403CBC401D7FC64E9ADCCEF7B24981481A24CFB23F274F3DC38B524883'
+        comparison['status'] = 'ok'
+        self.assertEqual(actualResult, comparison)
+            
+            
+    def test_shift_Acceptance2(self):
+        userParms = create._create(None)
+        userParms['grid'] = '2222444488881616160'
+        userParms['score'] = 9600
+        userParms['direction'] = 'left'
+        userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'        
+        actualResult = shift._shift(userParms)
+
+        comparison = {} 
+        comparison['grid'] = '2222444488881616164'
+        comparison['score'] = 9600
+        comparison['integrity'] = 'D0322C9B4DCAE2E0001F7BF3F24EFFE875038EA2A81660F77D14C29D7D960685'
+        comparison['status'] = 'lose'
+        self.assertEqual(actualResult, comparison)
+            
+            
+    def test_shift_Acceptance3(self):
+        userParms = create._create(None)
+        userParms['grid'] = '0000004024402020'
+        userParms['score'] = 4
+        userParms['direction'] = ''
+        userParms['integrity'] = '2A2EF0D1BEA22B9D6AB67C482BFF954F93F6A3617EF052E11DD8776BFFB7325A'        
+        actualResult = shift._shift(userParms)
+
+        comparison = {} 
+        comparison['grid'] = '4000000000804420'
+        comparison['score'] = 16
+        comparison['integrity'] = '96AE2C09F18145AB3B76655B47F6F9B902A48077B2DB9D365D747A801981B949'
+        comparison['status'] = 'ok'
+        self.assertEqual(actualResult, comparison)
+            
         
         
         

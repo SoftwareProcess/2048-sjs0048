@@ -5,6 +5,9 @@
 import random
 import hashlib
 
+
+score = 0
+
 def _shift(userParms):
     ###############################################
     ###Basic conditionals to make sure the grid####
@@ -12,23 +15,86 @@ def _shift(userParms):
     ###        theory, impossible              ####
     ###############################################
     
-    if 'direction' not in userParms:
-        print("Please specify a direction that you want to shift")
-        return 
+    output = {}
+    if 'grid' not in userParms:
+        output['status'] = 'error: missing grid'
+        return output
+    
+    if (userParms['direction'].lower() != 'up' or userParms['direction'].lower() != 'down'
+          or userParms['direction'].lower() != 'right' or userParms['direction'].lower() != 'left'
+          or userParms['direction'] != ''):
+        output['status'] = 'error: invalid direction'
+        return output
+    
+    if userParms['integrity'] != hashlib.sha256(str(userParms['grid']) + '.' + str(userParms['score'])).hexdigest().upper():
+        output['status'] = 'error: bad integrity value'
+        return output
+    
+    if userParms['score'] %2 != 0 or userParms['score'] is not int:
+        output['status'] = 'error: invalid score'
+        return output
+    else:
+        score = userParms['score']
+    
+    result = stringIntoList(userParms['grid'])      ###creates a 1D list of the grid###
+    
+    if len(result) != 16:
+        output['status'] = 'error: invalid grid'
+        return output
     
     
-    result = stringIntoList(userParms['grid'])
+    gameboard = create2DList(result)                ###converts 1D list into 2D###
     
-    if len(result) < 16:
-        errorMes = "Error: This grid is too small. Please check the input string."
-        return errorMes
-    elif len(result) > 16:
-        errorMes = "Error: This grid is too large. Please check the input string."
-        return errorMes
+        ################################################
+        ### This section determines the desired shift###
+        ###        direction. Default is down.       ###
+        ################################################
+    if userParms['direction'].lower() == 'up':
+        newBoard = shiftUp(gameboard)
+    elif userParms['direction'].lower() == 'right':
+        newBoard = shiftDown(gameboard)
+    elif userParms['direction'].lower() == 'left':
+        newBoard = shiftDown(gameboard)
+    else:
+        newBoard = shiftDown(gameboard)
     
-    gameboard = create2DList(result)
+    boardAs1D = convertTo1DList(newBoard)
+    openSpots = indicesOfAllZeros(boardAs1D)
+    twoOrFour = random.randint(0, 1)
     
-    return gameboard
+    if twoOrFour == 0:
+        nextPiece = 2
+    else:
+        nextPiece = 4
+    
+    nextSpot = random.randint(0, len(openSpots) - 1)
+    
+    boardAs1D[openSpots[nextSpot]] = nextPiece
+    
+    newGrid = ''
+    for element in boardAs1D:
+        newGrid += element
+    
+    output['grid'] = newGrid
+    
+    output['score'] = score
+    
+    encoded = (newGrid + '.' + str(score)).encode()
+    integrity = hashlib.sha256(encoded).hexdigest().upper()
+    
+    output['integrity'] = integrity
+    
+    if 2048 in boardAs1D:
+        output['status'] = 'win'
+        
+    elif boardAs1D == result or 0 not in boardAs1D:
+        output['status'] = 'lose'
+    else:
+        output['status'] = 'okay'
+    
+    
+    
+    return output
 
 
         ####################################################################################################
@@ -340,17 +406,18 @@ def combine(listIn: list):
 
                 listIn[i][j] = listIn[i][j] * 2
                 listIn[i][j + 1] = 0
+                score += listIn[i][j]
+                
                 
     return listIn            
 
     
-
 ####################################################
 ###Simply checks if there are 4 rows in the list ###
 ### then confirms that there are the same num of ###
 ###          columns as there are rows.          ###
 ####################################################
-def checkForError(listIn: list):
+def checkForError(listIn: list):    ####This function was primarily used for testing. It is not truly necessary####
     
     
     if len(listIn) != 4:                    
