@@ -30,7 +30,7 @@ class ShiftTest(unittest.TestCase):
         actualResult = shift._shift(userParms)
         testVal = {}
         testVal['status'] = 'error: invalid grid'
-        self.assertEqual(actualResult, testVal['status'])
+        self.assertEqual(actualResult, testVal)
         
     def test_shift_ListInto2dList(self):
         userParms = {}
