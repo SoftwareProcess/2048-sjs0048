@@ -163,7 +163,21 @@ class ShiftTest(unittest.TestCase):
         self.assertEqual(actualResult, comparison)
             
         
-        
+    def test_shift_Acceptance4(self):
+        userParms = create._create(None)
+        userParms['grid'] = '1024102400000000000000'
+        userParms['score'] = 129024
+        userParms['direction'] = 'left'
+        userParms['integrity'] = '18FF0FE71EB8CCFA82556511578B321D0B69A8E2FD5202EBD3A949EB35CB3C45'        
+        actualResult = shift._shift(userParms)
+
+        comparison = {} 
+        comparison['grid'] = '2048000000000000002'
+        comparison['score'] = 131072
+        comparison['integrity'] = '51A7C485E859A94F5FFCCB25C682A66D8671ABB9AF1682756233C17499B4DE68'
+        comparison['status'] = 'win'
+        self.assertEqual(actualResult, comparison)
+                
         
         
         
