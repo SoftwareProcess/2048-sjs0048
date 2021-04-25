@@ -12,7 +12,9 @@ class ShiftTest(unittest.TestCase):
 ### test cases did perform their function during development and the #####
 ### methods do seem to work just fine                                  ###
 ##########################################################################
-    def test_shift_GridTooSmall(self):
+
+
+    """def test_shift_GridTooSmall(self):
         userParms = {}
         userParms['grid'] = '000020020000000'
         userParms['direction'] = 'left'
@@ -153,7 +155,7 @@ class ShiftTest(unittest.TestCase):
         userParms['integrity'] = integrity
         actualResult = shift._shift(userParms)
         comparison = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 0], [4, 8, 0, 2]]
-        self.assertEqual(actualResult['grid'], shift.convertTo1DList(comparison))
+        self.assertEqual(actualResult['grid'], shift.convertTo1DList(comparison))"""
            
         
 
