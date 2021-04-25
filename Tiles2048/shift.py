@@ -33,7 +33,7 @@ def _shift(userParms):
     
     #print(type(userParms['score'])) ### just a test###
     
-    if userParms['score'] %2 != 0 or type(userParms['score']) is not int:
+    if userParms['score'] %4 != 0 or type(userParms['score']) is not int:
         output['status'] = 'error: invalid score'
         return output
     else:
