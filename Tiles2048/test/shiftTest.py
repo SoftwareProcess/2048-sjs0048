@@ -13,7 +13,20 @@ class ShiftTest(unittest.TestCase):
 ### methods do seem to work just fine                                  ###
 ##########################################################################
 
-
+    def test1(self):
+        userParms = {}
+        userParms['grid'] = '0020000020000000'
+        userParms['score'] = 0
+        userParms['direction'] = '' 
+        userParms['integrity'] = '7CD5E3DEAB08FCAE8F64433DC4A63CC922571EBF60EE1D1938ADCD415FB760E5'
+        userParms['status'] = 'ok'
+        result = {}
+        result['grid'] = '0000004000002020'
+        result['score'] = 0
+        result['integrity'] = '0DA3DEE7C5D13224BA4937CCF213B29C57676C36CDFE1C5CFC86ED069C644A17'
+        self.assertEqual(result, shift._shift(userParms))
+        
+        
     """def test_shift_GridTooSmall(self):
         userParms = {}
         userParms['grid'] = '000020020000000'
