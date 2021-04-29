@@ -73,9 +73,17 @@ def _shift(userParms):
     boardAs1D = convertTo1DList(newBoard)
     openSpots = indicesOfAllZeros(boardAs1D)
     
-    if len(openSpots) == 0:         ###necessary in order to make sure that shifting is actually possible.###
-        output['status'] = 'error: no shift possible' ###This check was later in the code, but it threw an error prior to getting there.###
-        return output
+    testBoardLeft, tester = shiftLeft(create2DList(gameboard), 0)
+    testBoardRight, tester = shiftRight(create2DList(gameboard), 0)
+    testBoardUp, tester = shiftUp(create2DList(gameboard), 0)
+    testBoardDown, tester = shiftDown(create2DList(gameboard), 0)
+    
+    if (testBoardDown == gameboard and 
+        testBoardRight == gameboard and
+        testBoardLeft == gameboard and 
+        testBoardUp == gameboard):         ###necessary in order to make sure that shifting is actually possible.###
+            output['status'] = 'error: no shift possible' ###This check was later in the code, but it threw an error prior to getting there.###
+            return output
     
     twoOrFour = random.randint(0, 1)
     
