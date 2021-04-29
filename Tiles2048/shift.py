@@ -30,10 +30,6 @@ def _shift(userParms):
         output['status'] = 'error: invalid direction'
         return output
     
-    userEncoded = (str(userParms['grid']) + '.' + str(userParms['score'])).encode()
-    if userParms['integrity'] != hashlib.sha256(userEncoded).hexdigest().upper():
-        output['status'] = 'error: bad integrity value'
-        return output
     
     #print(type(userParms['score'])) ### just a test###
     
@@ -45,8 +41,16 @@ def _shift(userParms):
     
     result = stringIntoList(userParms['grid'])      ###creates a 1D list of the grid###
     
+    if result == None:
+        output['status'] = 'error: invalid grid'
+        
     if len(result) != 16:
         output['status'] = 'error: invalid grid'
+        return output
+    
+    userEncoded = (str(userParms['grid']) + '.' + str(userParms['score'])).encode()
+    if userParms['integrity'] != hashlib.sha256(userEncoded).hexdigest().upper():
+        output['status'] = 'error: bad integrity value'
         return output
     
     
@@ -197,12 +201,13 @@ def stringIntoList(temp: str) -> list:
             i = i + 1
             continue
         
-        else:
+        else:        
             print("Input string contains either: \nNumbers that are not powers of 2 (plus 0) ")
             print("OR\nCharacters that are not numbers.")
             print("Please try again with a valid string.")
             print("Please note: This will most likely result in an invalid grid size.")
             print("That error message may appear as well as a result.")
+            return None
     return output
 
 
