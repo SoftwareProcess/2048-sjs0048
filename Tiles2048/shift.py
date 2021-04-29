@@ -56,6 +56,17 @@ def _shift(userParms):
     
     
     gameboard = create2DList(result)                ###converts 1D list into 2D###
+    testBoardLeft, tester = shiftLeft(gameboard, 0)
+    testBoardRight, tester = shiftRight(gameboard, 0)
+    testBoardUp, tester = shiftUp(gameboard, 0)
+    testBoardDown, tester = shiftDown(gameboard, 0)
+    
+    if (testBoardDown == gameboard and 
+        testBoardRight == gameboard and
+        testBoardLeft == gameboard and 
+        testBoardUp == gameboard):         ###necessary in order to make sure that shifting is actually possible.###
+            output['status'] = 'error: no shift possible' ###This check was later in the code, but it threw an error prior to getting there.###
+            return output
     
         ################################################
         ### This section determines the desired shift###
