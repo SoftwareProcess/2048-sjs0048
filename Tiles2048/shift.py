@@ -104,7 +104,11 @@ def _shift(userParms):
     if 2048 in boardAs1D:
         output['status'] = 'win'
         
-    elif boardAs1D == result:
+    elif (
+        shiftLeft(create2DList(boardAs1D)) == gameboard and 
+        shiftRight(create2DList(boardAs1D)) == gameboard and 
+        shiftUp(create2DList(boardAs1D)) == gameboard and
+        shiftDown(create2DList(boardAs1D)) == gameboard):
         output['status'] = 'lose'
     else:
         output['status'] = 'ok'
