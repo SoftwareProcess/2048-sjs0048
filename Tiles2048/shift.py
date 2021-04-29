@@ -202,11 +202,11 @@ def stringIntoList(temp: str) -> list:
             continue
         
         else:        
-            print("Input string contains either: \nNumbers that are not powers of 2 (plus 0) ")
+            """print("Input string contains either: \nNumbers that are not powers of 2 (plus 0) ")
             print("OR\nCharacters that are not numbers.")
             print("Please try again with a valid string.")
             print("Please note: This will most likely result in an invalid grid size.")
-            print("That error message may appear as well as a result.")
+            print("That error message may appear as well as a result.")"""
             return None
     return output
 
