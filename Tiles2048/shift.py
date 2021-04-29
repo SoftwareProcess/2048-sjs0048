@@ -16,7 +16,7 @@ def _shift(userParms):
     ###############################################
     score = 0
     output = {}
-    if 'grid' not in userParms:
+    if 'grid' not in userParms or userParms['grid'] == '':
         output['status'] = 'error: missing grid'
         return output
     
