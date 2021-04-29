@@ -101,15 +101,22 @@ def _shift(userParms):
     
     output['integrity'] = integrity
     
+    ##unused vars are necessary given the context##
+    ##other vars are used in test down below##
+    testBoardLeft, tester = shiftLeft(create2DList(boardAs1D), 0)
+    testBoardRight, tester = shiftRight(create2DList(boardAs1D), 0)
+    testBoardUp, tester = shiftUp(create2DList(boardAs1D), 0)
+    testBoardDown, tester = shiftDown(create2DList(boardAs1D), 0)
+    
     if 2048 in boardAs1D:
         output['status'] = 'win'
         
-    elif (
-        shiftLeft(create2DList(boardAs1D)) == gameboard and 
-        shiftRight(create2DList(boardAs1D)) == gameboard and 
-        shiftUp(create2DList(boardAs1D)) == gameboard and
-        shiftDown(create2DList(boardAs1D)) == gameboard):
-        output['status'] = 'lose'
+    elif (      #######################convoluted test for losing########################
+        testBoardLeft == gameboard and 
+        testBoardRight == gameboard and 
+        testBoardUp == gameboard and
+        testBoardDown == gameboard):
+            output['status'] = 'lose'
     else:
         output['status'] = 'ok'
     
