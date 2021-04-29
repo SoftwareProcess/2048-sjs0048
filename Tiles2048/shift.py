@@ -68,6 +68,10 @@ def _shift(userParms):
             output['status'] = 'error: no shift possible' ###This check was later in the code, but it threw an error prior to getting there.###
             return output
     
+    testBoardDown = []
+    testBoardLeft = []
+    testBoardRight = []
+    testBoardUp = []
         ################################################
         ### This section determines the desired shift###
         ###        direction. Default is down.       ###
