@@ -148,7 +148,7 @@ def stringIntoList(temp: str) -> list:
         ################################################
         ###    If first digit in num is 1 then ....  ###
         ################################################        
-        elif int(temp[i]) == '1':
+        elif (temp[i]) == '1':
             if (temp[i + 1]) == '2':   ###check if next digit is 2###
                 output.append(128)      ###if it is, add 128 to list###
                 i = i + 3               ###increment i by 3 and continue at top of loop### 
