@@ -148,26 +148,34 @@ def stringIntoList(temp: str) -> list:
         ################################################
         ###    If first digit in num is 1 then ....  ###
         ################################################        
-        elif (temp[i]) == '1':
-            if (temp[i + 1]) == '2':   ###check if next digit is 2###
-                output.append(128)      ###if it is, add 128 to list###
-                i = i + 3               ###increment i by 3 and continue at top of loop### 
-                continue
-            elif (temp[i + 1]) == '0': ###check if next digit is 0###
-                output.append(1024)     ###if it is, add 1024 to list###
-                i = i + 4               ###increment i by 4 and continue at top of loop###
-                continue
-            elif (temp[i + 1]) == '6': ###if next digit is 6###
-                output.append(16)       ###then add 16 to list###
-                i = i + 2               ###increment i by 2 and continue at top of loop###
-                continue
-            
-        elif (temp[i]) == '2':         ###if first digit is 2###
-            if i != len(temp) - 1:              ###got error when 2 was the last element. so this is necessary###
-                if (temp[i + 1]) == '5':   ###if next digit is 5 ###
-                    output.append(256)      ###add 256 to the list###
-                    i = i + 3               ###increment i by 3 and continue at top of loop###
+        if (temp[i]) == '1':
+            if i != len(temp) - 2:
+                if (temp[i + 1]) == '2':   ###check if next digit is 2###
+                    if (temp[i + 2]) == '8':
+                        output.append(128)      ###if it is, add 128 to list###
+                        i = i + 3               ###increment i by 3 and continue at top of loop### 
+                        continue
+            if i != len(temp) - 3:
+                if (temp[i + 1]) == '0': ###check if next digit is 0###
+                    if(temp[i + 2]) == '2':
+                        if(temp[i + 3]) == '4':
+                            output.append(1024)     ###if it is, add 1024 to list###
+                            i = i + 4               ###increment i by 4 and continue at top of loop###
+                            continue
+            if i != len(temp) - 1:
+                if (temp[i + 1]) == '6': ###if next digit is 6###
+                    output.append(16)       ###then add 16 to list###
+                    i = i + 2               ###increment i by 2 and continue at top of loop###
                     continue
+            
+        if (temp[i]) == '2':         ###if first digit is 2###
+            if i != len(temp) - 2:              ###got error when 2 was the last element. so this is necessary###
+                if (temp[i + 1]) == '5':   ###if next digit is 5 ###
+                    if(temp[i + 2]) == '6':
+                    
+                        output.append(256)      ###add 256 to the list###
+                        i = i + 3               ###increment i by 3 and continue at top of loop###
+                        continue
                 else:
                     output.append(2)        ###if next digit is not 5###
                     i = i + 1               ###add 2 to the list and increment i by 1###
@@ -177,27 +185,34 @@ def stringIntoList(temp: str) -> list:
                 i = i + 1               ###add 2 to the list and increment i by 1###
                 continue                ###continue at top of loop###
             
-        elif (temp[i]) == '3':         ###if first digit is 3###
-            output.append(32)           ###add 32 to list and increment i by 2###
-            i = i + 2                   ###continue at top of list###
-            continue
+        if (temp[i]) == '3':         ###if first digit is 3###
+            if i != len(temp) - 1:
+                if(temp[i + 1]) == '2':
+                    output.append(32)           ###add 32 to list and increment i by 2###
+                    i = i + 2                   ###continue at top of list###
+                    continue
         
-        elif (temp[i]) == '4':         ###if first digit is 4###
+        if (temp[i]) == '4':         ###if first digit is 4###
             output.append(4)            ###no other possible powers of 2 start with 4, so add 4 to list###
             i = i + 1                   ###increment i by 1###
             continue                    ###continue at top of loop###
         
-        elif (temp[i]) == '5':         ###if first digit is 5###
-            output.append(512)          ###add 512 to list###
-            i = i + 3                   ###increment i by 512###
-            continue                    ###continue loop###
+        if (temp[i]) == '5':         ###if first digit is 5###
+            if i != len(temp) - 2:
+                if(temp[i + 1]) == '1':
+                    if(temp[i + 2]) == '2':
+                        output.append(512)          ###add 512 to list###
+                        i = i + 3                   ###increment i by 512###
+                        continue                    ###continue loop###
         
-        elif (temp[i]) == '6':         ###if first digit is 6###
-            output.append(64)           ###add 64 to list###
-            i = i + 2                   ###increment i by 2###
-            continue
+        if (temp[i]) == '6':         ###if first digit is 6###
+            if i != len(temp) - 2:
+                if(temp[i + 1]) == '4':
+                    output.append(64)           ###add 64 to list###
+                    i = i + 2                   ###increment i by 2###
+                    continue
         
-        elif (temp[i]) == '8':         ###if first digit is 8 then add 8 to list###
+        if (temp[i]) == '8':         ###if first digit is 8 then add 8 to list###
             output.append(8)            ###increment by 1 and continue loop###
             i = i + 1
             continue
