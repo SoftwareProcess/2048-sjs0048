@@ -16,24 +16,24 @@ def _shift(userParms):
     ###############################################
     score = 0
     output = {}
-    if 'grid' not in userParms:
+    if 'grid' not in userParms or userParms['grid'] == '':
         output['status'] = 'error: missing grid'
         return output
     
+    if 'direction' not in userParms:
+        userParms['direction'] = ''
+      
+        
     if (userParms['direction'].lower() != 'up' and userParms['direction'].lower() != 'down'
           and userParms['direction'].lower() != 'right' and userParms['direction'].lower() != 'left'
           and userParms['direction'] != ''):
         output['status'] = 'error: invalid direction'
         return output
     
-    userEncoded = (str(userParms['grid']) + '.' + str(userParms['score'])).encode()
-    if userParms['integrity'] != hashlib.sha256(userEncoded).hexdigest().upper():
-        output['status'] = 'error: bad integrity value'
-        return output
     
     #print(type(userParms['score'])) ### just a test###
     
-    if userParms['score'] %2 != 0 or type(userParms['score']) is not int:
+    if userParms['score'] %4 != 0 or type(userParms['score']) is not int:
         output['status'] = 'error: invalid score'
         return output
     else:
@@ -41,8 +41,17 @@ def _shift(userParms):
     
     result = stringIntoList(userParms['grid'])      ###creates a 1D list of the grid###
     
+    if result is None:
+        output['status'] = 'error: invalid grid'
+        return output
+        
     if len(result) != 16:
         output['status'] = 'error: invalid grid'
+        return output
+    
+    userEncoded = (str(userParms['grid']) + '.' + str(userParms['score'])).encode()
+    if userParms['integrity'] != hashlib.sha256(userEncoded).hexdigest().upper():
+        output['status'] = 'error: bad integrity value'
         return output
     
     
@@ -63,6 +72,11 @@ def _shift(userParms):
     
     boardAs1D = convertTo1DList(newBoard)
     openSpots = indicesOfAllZeros(boardAs1D)
+    
+    if len(openSpots) == 0:         ###necessary in order to make sure that shifting is actually possible.###
+        output['status'] = 'error: no shift possible' ###This check was later in the code, but it threw an error prior to getting there.###
+        return output
+    
     twoOrFour = random.randint(0, 1)
     
     if twoOrFour == 0:
@@ -87,11 +101,22 @@ def _shift(userParms):
     
     output['integrity'] = integrity
     
+    ##unused vars are necessary given the context##
+    ##other vars are used in test down below##
+    testBoardLeft, tester = shiftLeft(create2DList(boardAs1D), 0)
+    testBoardRight, tester = shiftRight(create2DList(boardAs1D), 0)
+    testBoardUp, tester = shiftUp(create2DList(boardAs1D), 0)
+    testBoardDown, tester = shiftDown(create2DList(boardAs1D), 0)
+    
     if 2048 in boardAs1D:
         output['status'] = 'win'
         
-    elif boardAs1D == result or 0 not in boardAs1D:
-        output['status'] = 'lose'
+    elif (      #######################convoluted test for losing########################
+        convertTo1DList(testBoardLeft) == boardAs1D and 
+        convertTo1DList(testBoardRight) == boardAs1D and 
+        convertTo1DList(testBoardUp) == boardAs1D and
+        convertTo1DList(testBoardDown) == boardAs1D):
+            output['status'] = 'lose'
     else:
         output['status'] = 'ok'
     
@@ -126,7 +151,7 @@ def stringIntoList(temp: str) -> list:
         ### If first digit in num is 0 then num is 0.###
         ###  Add to list. Increment index (i) by 1   ###
         ################################################
-        if int(temp[i]) == 0:
+        if (temp[i]) == '0':
             output.append(0)
             i = i + 1
             continue
@@ -134,26 +159,34 @@ def stringIntoList(temp: str) -> list:
         ################################################
         ###    If first digit in num is 1 then ....  ###
         ################################################        
-        elif int(temp[i]) == 1:
-            if int(temp[i + 1]) == 2:   ###check if next digit is 2###
-                output.append(128)      ###if it is, add 128 to list###
-                i = i + 3               ###increment i by 3 and continue at top of loop### 
-                continue
-            elif int(temp[i + 1]) == 0: ###check if next digit is 0###
-                output.append(1024)     ###if it is, add 1024 to list###
-                i = i + 4               ###increment i by 4 and continue at top of loop###
-                continue
-            elif int(temp[i + 1]) == 6: ###if next digit is 6###
-                output.append(16)       ###then add 16 to list###
-                i = i + 2               ###increment i by 2 and continue at top of loop###
-                continue
-            
-        elif int(temp[i]) == 2:         ###if first digit is 2###
-            if i != len(temp) - 1:              ###got error when 2 was the last element. so this is necessary###
-                if int(temp[i + 1]) == 5:   ###if next digit is 5 ###
-                    output.append(256)      ###add 256 to the list###
-                    i = i + 3               ###increment i by 3 and continue at top of loop###
+        if (temp[i]) == '1':
+            if i != len(temp) - 2:
+                if (temp[i + 1]) == '2':   ###check if next digit is 2###
+                    if (temp[i + 2]) == '8':
+                        output.append(128)      ###if it is, add 128 to list###
+                        i = i + 3               ###increment i by 3 and continue at top of loop### 
+                        continue
+            if i != len(temp) - 3:
+                if (temp[i + 1]) == '0': ###check if next digit is 0###
+                    if(temp[i + 2]) == '2':
+                        if(temp[i + 3]) == '4':
+                            output.append(1024)     ###if it is, add 1024 to list###
+                            i = i + 4               ###increment i by 4 and continue at top of loop###
+                            continue
+            if i != len(temp) - 1:
+                if (temp[i + 1]) == '6': ###if next digit is 6###
+                    output.append(16)       ###then add 16 to list###
+                    i = i + 2               ###increment i by 2 and continue at top of loop###
                     continue
+            
+        if (temp[i]) == '2':         ###if first digit is 2###
+            if i != len(temp) - 2:              ###got error when 2 was the last element. so this is necessary###
+                if (temp[i + 1]) == '5':   ###if next digit is 5 ###
+                    if(temp[i + 2]) == '6':
+                    
+                        output.append(256)      ###add 256 to the list###
+                        i = i + 3               ###increment i by 3 and continue at top of loop###
+                        continue
                 else:
                     output.append(2)        ###if next digit is not 5###
                     i = i + 1               ###add 2 to the list and increment i by 1###
@@ -163,37 +196,45 @@ def stringIntoList(temp: str) -> list:
                 i = i + 1               ###add 2 to the list and increment i by 1###
                 continue                ###continue at top of loop###
             
-        elif int(temp[i]) == 3:         ###if first digit is 3###
-            output.append(32)           ###add 32 to list and increment i by 2###
-            i = i + 2                   ###continue at top of list###
-            continue
+        if (temp[i]) == '3':         ###if first digit is 3###
+            if i != len(temp) - 1:
+                if(temp[i + 1]) == '2':
+                    output.append(32)           ###add 32 to list and increment i by 2###
+                    i = i + 2                   ###continue at top of list###
+                    continue
         
-        elif int(temp[i]) == 4:         ###if first digit is 4###
+        if (temp[i]) == '4':         ###if first digit is 4###
             output.append(4)            ###no other possible powers of 2 start with 4, so add 4 to list###
             i = i + 1                   ###increment i by 1###
             continue                    ###continue at top of loop###
         
-        elif int(temp[i]) == 5:         ###if first digit is 5###
-            output.append(512)          ###add 512 to list###
-            i = i + 3                   ###increment i by 512###
-            continue                    ###continue loop###
+        if (temp[i]) == '5':         ###if first digit is 5###
+            if i != len(temp) - 2:
+                if(temp[i + 1]) == '1':
+                    if(temp[i + 2]) == '2':
+                        output.append(512)          ###add 512 to list###
+                        i = i + 3                   ###increment i by 512###
+                        continue                    ###continue loop###
         
-        elif int(temp[i]) == 6:         ###if first digit is 6###
-            output.append(64)           ###add 64 to list###
-            i = i + 2                   ###increment i by 2###
-            continue
+        if (temp[i]) == '6':         ###if first digit is 6###
+            if i != len(temp) - 2:
+                if(temp[i + 1]) == '4':
+                    output.append(64)           ###add 64 to list###
+                    i = i + 2                   ###increment i by 2###
+                    continue
         
-        elif int(temp[i]) == 8:         ###if first digit is 8 then add 8 to list###
+        if (temp[i]) == '8':         ###if first digit is 8 then add 8 to list###
             output.append(8)            ###increment by 1 and continue loop###
             i = i + 1
             continue
         
-        else:
-            print("Input string contains either: \nNumbers that are not powers of 2 (plus 0) ")
+        else:        
+            """print("Input string contains either: \nNumbers that are not powers of 2 (plus 0) ")
             print("OR\nCharacters that are not numbers.")
             print("Please try again with a valid string.")
             print("Please note: This will most likely result in an invalid grid size.")
-            print("That error message may appear as well as a result.")
+            print("That error message may appear as well as a result.")"""
+            return None
     return output
 
 
