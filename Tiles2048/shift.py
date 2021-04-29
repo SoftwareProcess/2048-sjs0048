@@ -41,7 +41,7 @@ def _shift(userParms):
     
     result = stringIntoList(userParms['grid'])      ###creates a 1D list of the grid###
     
-    if result == None:
+    if result is None:
         output['status'] = 'error: invalid grid'
         
     if len(result) != 16:
