@@ -44,7 +44,7 @@ class ShiftTest(unittest.TestCase):
         userParms = {}
         userParms['grid'] = '2222444488881616160'
         userParms['score'] = 9600
-        userParms['direction'] = 'left' 
+        userParms['direction'] = 'LEFT' 
         userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'
         
         result = {}
@@ -58,7 +58,7 @@ class ShiftTest(unittest.TestCase):
         userParms = {}
         userParms['grid'] = '2222444488881616160'
         userParms['score'] = 9600
-        userParms['direction'] = 'up' 
+        userParms['direction'] = 'Up' 
         userParms['integrity'] = '66457746F0596CEE48B4FA4FA9C57A8A56A917F5B42F2600F12CD4266B9098BE'
         
         result = {}
@@ -72,7 +72,7 @@ class ShiftTest(unittest.TestCase):
         userParms = {}
         userParms['grid'] = '2481632641282562481632641280'
         userParms['score'] = 9600
-        userParms['direction'] = 'down' 
+        userParms['direction'] = 'DOWN' 
         userParms['integrity'] = 'CBD6F924B76E41871F106ABDE80AF9BA71350A53B0A148F26F16AF14CA5F6B06'
         
         result = {}
@@ -86,7 +86,7 @@ class ShiftTest(unittest.TestCase):
         userParms = {}
         userParms['grid'] = '1024102400000000000000'
         userParms['score'] = 129024
-        userParms['direction'] = 'left' 
+        userParms['direction'] = 'LeFT' 
         userParms['integrity'] = '18FF0FE71EB8CCFA82556511578B321D0B69A8E2FD5202EBD3A949EB35CB3C45'
         
         result = {}
@@ -100,7 +100,7 @@ class ShiftTest(unittest.TestCase):
         userParms = {}
         userParms['grid'] = '0020000020000000'
         userParms['score'] = 0
-        userParms['direction'] = '' 
+        userParms['direction'] = 'down' 
         userParms['integrity'] = '7CD5E3DEAB08FCAE8F64433DC4A63CC922571EBF60EE1D1938ADCD415FB760E5'
         
         result = {}
