@@ -139,7 +139,7 @@ def stringIntoList(temp: str) -> list:
         ### If first digit in num is 0 then num is 0.###
         ###  Add to list. Increment index (i) by 1   ###
         ################################################
-        if (temp[i]) == 0:
+        if (temp[i]) == '0':
             output.append(0)
             i = i + 1
             continue
