@@ -104,7 +104,7 @@ def _shift(userParms):
     if 2048 in boardAs1D:
         output['status'] = 'win'
         
-    elif boardAs1D == result or 0 not in boardAs1D:
+    elif boardAs1D == result:
         output['status'] = 'lose'
     else:
         output['status'] = 'ok'
