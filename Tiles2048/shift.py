@@ -112,10 +112,10 @@ def _shift(userParms):
         output['status'] = 'win'
         
     elif (      #######################convoluted test for losing########################
-        testBoardLeft == gameboard and 
-        testBoardRight == gameboard and 
-        testBoardUp == gameboard and
-        testBoardDown == gameboard):
+        convertTo1DList(testBoardLeft) == boardAs1D and 
+        convertTo1DList(testBoardRight) == boardAs1D and 
+        convertTo1DList(testBoardUp) == boardAs1D and
+        convertTo1DList(testBoardDown) == boardAs1D):
             output['status'] = 'lose'
     else:
         output['status'] = 'ok'
