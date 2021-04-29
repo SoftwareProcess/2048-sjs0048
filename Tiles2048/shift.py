@@ -43,6 +43,7 @@ def _shift(userParms):
     
     if result is None:
         output['status'] = 'error: invalid grid'
+        return output
         
     if len(result) != 16:
         output['status'] = 'error: invalid grid'
